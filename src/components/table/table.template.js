@@ -2,16 +2,25 @@ const CHAR_CODES = {
   A: 65,
   Z: 90,
 };
+
 function createCell() {
   return `<div class="cell" contenteditable></div>`;
 }
-function createColumn(col) {
-  return `<div class="column">${col}</div>`;
+
+function createColumn(col, index) {
+  return `
+    <div class="column">
+        ${col}
+        <div class="col-resize" data-resize="col" data-index-col="${index}"></div>
+    </div>`;
 }
 
 function createRow(index, content) {
   return `<div class="row">
-        <div class="row-info">${index}</div>
+        <div class="row-info">
+            ${index}
+            ${index ? `<div class="row-resize" data-resize="row"></div>` : ""}
+        </div>
         <div class="row-data">${content}</div>
     </div>`;
 }
